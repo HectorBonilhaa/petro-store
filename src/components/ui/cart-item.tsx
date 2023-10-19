@@ -1,7 +1,11 @@
 import { CartContext, CartProduct } from "@/providers/cart";
 import Image from "next/image";
 import { Button } from "./button";
-import { ArrowLeftSquareIcon, ArrowRightSquareIcon, Trash2Icon } from "lucide-react";
+import {
+  ArrowLeftSquareIcon,
+  ArrowRightSquareIcon,
+  Trash2Icon,
+} from "lucide-react";
 import { useContext } from "react";
 
 interface CartItemProps {
@@ -9,15 +13,23 @@ interface CartItemProps {
 }
 
 const CartItem = ({ product }: CartItemProps) => {
-  const {decreaseProductQuantity, increaseProductQuantity} = useContext(CartContext)
+  const {
+    decreaseProductQuantity,
+    increaseProductQuantity,
+    removeProductFromCart,
+  } = useContext(CartContext);
 
   const handleDecreaseProductQuantityClick = () => {
-    decreaseProductQuantity(product.id)
-  }
+    decreaseProductQuantity(product.id);
+  };
 
   const handleIncreaseProductQuantityClick = () => {
-    increaseProductQuantity(product.id)
-  }
+    increaseProductQuantity(product.id);
+  };
+
+  const handleRemoveProductClick = () => {
+    removeProductFromCart(product.id);
+  };
 
   return (
     <div className="flex items-center justify-between">
@@ -51,22 +63,27 @@ const CartItem = ({ product }: CartItemProps) => {
 
           <div className="flex items-center gap-1">
             <Button size="icon" variant="outline" className="h-8 w-8">
-              <ArrowLeftSquareIcon size={16} onClick={handleDecreaseProductQuantityClick} />
+              <ArrowLeftSquareIcon
+                size={16}
+                onClick={handleDecreaseProductQuantityClick}
+              />
             </Button>
 
             <span className="text-xs">{product.quantity}</span>
 
             <Button size="icon" variant="outline" className="h-8 w-8">
-              <ArrowRightSquareIcon size={16} onClick={handleIncreaseProductQuantityClick}  />
+              <ArrowRightSquareIcon
+                size={16}
+                onClick={handleIncreaseProductQuantityClick}
+              />
             </Button>
           </div>
         </div>
       </div>
 
-            <Button size="icon" variant="outline">
-              <Trash2Icon size={16}/>
-
-            </Button>
+      <Button size="icon" variant="outline" onClick={handleRemoveProductClick}>
+        <Trash2Icon size={16} />
+      </Button>
     </div>
   );
 };
