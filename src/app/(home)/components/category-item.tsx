@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { CATEGORY_ICON } from "@/contants/category-icons";
+import { CATEGORY_ICON } from "@/constants/category-icons";
 import { Category } from "@prisma/client";
 import Link from "next/link";
 
