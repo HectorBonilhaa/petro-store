@@ -2,6 +2,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import DiscountBadge from "@/components/ui/discount-badge";
 import { ProductsWithTotalPrice } from "@/helpers/product";
 import {
   ArrowDownIcon,
@@ -43,9 +44,7 @@ const ProductInfo = ({
       <div className="flex items-center gap-2">
         <h1 className="text-xl font-bold">R$ {totalPrice.toFixed(2)}</h1>
         {discountPercentage > 0 && (
-          <Badge className="left-3 top-3 px-2 py-[2px]">
-            <ArrowDownIcon size={14} /> {discountPercentage}%
-          </Badge>
+          <DiscountBadge>{discountPercentage}</DiscountBadge>
         )}
       </div>
 
@@ -84,19 +83,22 @@ const ProductInfo = ({
         Adicionar ao carrinho
       </Button>
 
-      <div className="flex items-center justify-between bg-accent px-5 py-2 mt-5 rounded-lg">
+      <div className="mt-5 flex items-center justify-between rounded-lg bg-accent px-5 py-2">
         <div className="flex items-center gap-2">
           <TruckIcon />
 
           <div className="flex flex-col">
             <p className="text-xs">
-              Entrega via <span className="font-bold text-yellow-400">Correios</span>©
+              Entrega via{" "}
+              <span className="font-bold text-yellow-400">Correios</span>©
             </p>
-            <p className="text-[#8162FF] text-xs">Envio para <span className="font-bold">todo Brasil</span></p>
+            <p className="text-xs text-[#8162FF]">
+              Envio para <span className="font-bold">todo Brasil</span>
+            </p>
           </div>
         </div>
 
-        <p className=" font-bold text-xs">Frete grátis</p>
+        <p className=" text-xs font-bold">Frete grátis</p>
       </div>
     </div>
   );
