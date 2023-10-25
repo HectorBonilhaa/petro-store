@@ -1,7 +1,7 @@
 "use client";
 
 import { ProductsWithTotalPrice } from "@/helpers/product";
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState, ReactNode, useEffect } from "react";
 
 export interface CartProduct extends ProductsWithTotalPrice {
   quantity: number;
@@ -31,6 +31,16 @@ export const CartContext = createContext<ICartContext>({
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<CartProduct[]>([]);
+
+  useEffect(() => {
+    setProducts(
+      JSON.parse(localStorage.getItem("@fsw-store/cart-products") || "[]"),
+    );
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("@fsw-store/cart-products", JSON.stringify(products));
+  }, [products]);
 
   const addProductToCart = (product: CartProduct) => {
     // Se o produto já estiver no carrinho, apenas aumente a sua quantidade
