@@ -40,25 +40,28 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     setProducts(
-      JSON.parse(localStorage.getItem("@fsw-store/cart-products") || "[]"),
+      JSON.parse(localStorage.getItem("@Petro-store/cart-products") || "[]"),
     );
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("@fsw-store/cart-products", JSON.stringify(products));
+    localStorage.setItem(
+      "@Petro-store/cart-products",
+      JSON.stringify(products),
+    );
   }, [products]);
 
   // Total sem descontos
   const subTotal = useMemo(() => {
     return products.reduce((acc, product) => {
-      return acc + Number(product.basePrice);
+      return acc + Number(product.basePrice) * product.quantity;
     }, 0);
   }, [products]);
 
   // Total com descontos
   const total = useMemo(() => {
     return products.reduce((acc, product) => {
-      return acc + product.totalPrice;
+      return acc + product.totalPrice * product.quantity;
     }, 0);
   }, [products]);
 
@@ -144,7 +147,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         cartTotalDiscount: 0,
         total,
         subTotal,
-        totalDiscount
+        totalDiscount,
       }}
     >
       {children}

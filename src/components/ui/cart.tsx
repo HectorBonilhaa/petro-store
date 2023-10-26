@@ -59,7 +59,7 @@ const Cart = () => {
         <Separator />
 
         <div className="flex items-center justify-between text-sm font-bold">
-          <p>Total::</p>
+          <p>Total:</p>
           <p>R$ {total.toFixed(2)}</p>
         </div>
       </div>
