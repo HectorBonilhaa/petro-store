@@ -48,7 +48,7 @@ export default async function Home() {
       </div>
 
       <PromoBanner
-        src="/Banner-home-02.png"
+        src="/Banner-home-02.svg"
         alt="até 55% de desconto em mouses"
       />
 
