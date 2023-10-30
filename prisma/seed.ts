@@ -6,6 +6,8 @@ async function main() {
   try {
     await prisma.product.deleteMany({});
     await prisma.category.deleteMany({});
+    await prisma.order.deleteMany({});
+    await prisma.orderProduct.deleteMany({});
 
 
     const mousesCategory = await prisma.category.create({
