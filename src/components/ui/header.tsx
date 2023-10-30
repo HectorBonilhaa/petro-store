@@ -6,6 +6,7 @@ import {
   LogInIcon,
   LogOutIcon,
   MenuIcon,
+  PackageSearchIcon,
   PercentIcon,
   ShoppingCartIcon,
 } from "lucide-react";
@@ -24,9 +25,15 @@ import { AvatarFallback } from "@radix-ui/react-avatar";
 import { Separator } from "./separator";
 import Link from "next/link";
 import Cart from "./cart";
+import { useContext } from "react";
+import { CartContext } from "@/providers/cart";
 
 const Header = () => {
   const { status, data } = useSession();
+
+  const { products } = useContext(CartContext);
+
+  const cartQuantityItems = products.length;
 
   const handleLoginClick = async () => {
     await signIn();
@@ -45,7 +52,7 @@ const Header = () => {
           </Button>
         </SheetTrigger>
 
-        <SheetContent side="left">
+        <SheetContent side="left" className="w-[21.875rem]">
           <SheetHeader className="text-left text-lg font-semibold">
             Menu
           </SheetHeader>
@@ -107,6 +114,18 @@ const Header = () => {
             </SheetClose>
 
             <SheetClose asChild>
+              <Link href="/orders">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start gap-2"
+                >
+                  <PackageSearchIcon size={16} />
+                  Meus Pedidos
+                </Button>
+              </Link>
+            </SheetClose>
+
+            <SheetClose asChild>
               <Link href="/deals">
                 <Button
                   variant="outline"
@@ -119,7 +138,7 @@ const Header = () => {
             </SheetClose>
 
             <SheetClose asChild>
-              <Link href={"/catalog"}>
+              <Link href="/catalog">
                 <Button
                   variant="outline"
                   className="w-full justify-start gap-2"
@@ -141,13 +160,18 @@ const Header = () => {
 
       <Sheet>
         <SheetTrigger asChild>
-          <Button size="icon" variant="outline">
+          <Button size="icon" variant="outline" className="relative">
+            {cartQuantityItems > 0 && (
+              <span className="absolute right-[calc(-1.25rem/2)] top-[calc(-1.25rem/2)] flex h-6 w-6 items-center justify-center rounded-lg bg-primary text-sm font-bold">
+                {cartQuantityItems}
+              </span>
+            )}
             <ShoppingCartIcon />
           </Button>
         </SheetTrigger>
 
         <SheetContent className="w-[90%]">
-          <Cart/>
+          <Cart />
         </SheetContent>
       </Sheet>
     </Card>
