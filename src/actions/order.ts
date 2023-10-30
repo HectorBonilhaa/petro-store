@@ -10,7 +10,7 @@ export const createOrder = async (
   const order = await prismaClient.order.create({
     data: {
       userId,
-      status: "WAITING_FOR_PAYMENT",
+      status: "AGUARDANDO_PAGAMENTO",
       orderProducts: {
         createMany: {
           data: cartProducts.map((product) => ({
