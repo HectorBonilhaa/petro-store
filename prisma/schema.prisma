@@ -38,12 +38,12 @@ model Order {
   orderProducts OrderProduct[]
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @default(now()) @updatedAt
-  status        OrderStatus    @default(WAITING_FOR_PAYMENT)
+  status        OrderStatus    @default(AGUARDANDO_PAGAMENTO)
 }
 
 enum OrderStatus {
-  WAITING_FOR_PAYMENT
-  PAYMENT_CONFIRMED
+  AGUARDANDO_PAGAMENTO
+  PAGO
 }
 
 model OrderProduct {
