@@ -32,39 +32,87 @@ export default async function Home() {
   });
 
   return (
-    <div className="flex flex-col gap-8 py-8">
-      <PromoBanner
-        src="/Banner-home-01.png"
-        alt="até 55% de desconto esse mês"
-      />
+    <div className="flex flex-col gap-8 py-8 lg:p-0">
+      <div className="sm: hidden lg:block">
+        <PromoBanner
+          className="h-[31,25rem] lg:w-full"
+          src="/Banner-home-01-desktop.png"
+          alt="Até 55% de desconto esse mês"
+        />
+      </div>
+
+      <div className="sm:block lg:hidden">
+        <PromoBanner
+          src="/Banner-home-01.png"
+          alt="Até 55% de desconto esse mês"
+        />
+      </div>
 
       <div className="px-5">
         <Categories />
       </div>
 
       <div>
-        <SectionTitle>Ofertas</SectionTitle>
+        <SectionTitle>
+          <a href="/deals">Ofertas</a>
+        </SectionTitle>
         <ProductList products={deals} />
       </div>
+      
+      <div className="lg:flex lg:justify-center lg:w-[100%] lg:gap-5 lg:p-3">
 
+      <a href="/category/mouses" className="lg:hidden sm:block sm:py-0">
       <PromoBanner
         src="/Banner-home-02.png"
         alt="até 55% de desconto em mouses"
       />
+      </a>
 
+      <a href="/category/mouses" className="">
+      <PromoBanner className="lg:w-[35.625rem]"
+        src="/Banner-home-02.png"
+        alt="até 55% de desconto em mouses"
+      />
+      </a>
+
+      <a href="/category/headphones" className="hidden lg:block">
+      <PromoBanner className="lg:w-[35.625rem]"
+        src="/Banner-home-03.png"
+        alt="até 55% de desconto em mouses"
+      />
+
+      </a>
+
+      </div>
+      
       <div>
+
+        <a href="/category/keyboards">
         <SectionTitle>Teclados</SectionTitle>
+        </a>
         <ProductList products={keyboards} />
       </div>
 
-      <div>
+      <div className="hidden lg:block">
+      <PromoBanner className=" flex w-[100%] h-[20.75rem] lg:p-5"
+          src="/Banner-home-04-desktop.png"
+          alt="até 20% de desconto em fones"
+          
+        />
+      </div>
+
+      <div className="lg:hidden sm:block">
+
+        <a href="/category/headphones">
         <PromoBanner
           src="/Banner-home-03.png"
           alt="até 20% de desconto em fones"
         />
+
+        </a>
       </div>
 
-      <div>
+      <div className="lg:mb-12">
         <SectionTitle>Mouses</SectionTitle>
         <ProductList products={mouses} />
       </div>
