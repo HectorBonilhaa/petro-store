@@ -175,7 +175,7 @@ const Header = () => {
           orientation="vertical"
         />
         <a
-          href="catalog"
+          href="/catalog"
           className="sm: hidden lg:block lg:text-[1rem] lg:text-sm  lg:font-semibold"
         >
           Catálogo

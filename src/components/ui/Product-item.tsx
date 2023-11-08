@@ -9,9 +9,10 @@ interface ProductItemProps {
 
 const ProductItem = ({ product }: ProductItemProps) => {
   return (
-    <Link href={`/product/${product.slug}`}>
-      <div className="flex flex-col gap-4">
-        <div className=" relative flex h-[170px] w-full items-center justify-center rounded-lg bg-accent">
+    <Link href={`/product/${product.slug}`}
+    className="lg:w-[180px]">
+      <div className="flex flex-col gap-4 lg:w-[180px]">
+        <div className=" relative flex h-[170px] items-center justify-center rounded-lg bg-accent lg:h-[190px] lg:w-[180px]">
           <Image
             src={product.imageUrls[0]}
             alt={product.name}
