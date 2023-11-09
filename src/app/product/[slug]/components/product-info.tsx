@@ -35,8 +35,10 @@ const ProductInfo = ({
   }
 
   return (
-    <div className="flex flex-col px-5">
-      <h2 className="text-lg">{product.name}</h2>
+      
+    <div className="flex flex-col px-5 lg:ml-2">
+      <p className="sm: hidden lg:block text-sm mt-10 text-[#A1A1A1] mb-1">Novo  |  100 vendidos</p>
+      <h2 className="text-lg lg:mb-2">{product.name}</h2>
 
       <div className="flex items-center gap-2">
         <h1 className="text-xl font-bold">R$ {product.totalPrice.toFixed(2)}</h1>
@@ -72,9 +74,9 @@ const ProductInfo = ({
         </Button>
       </div>
       
-      <div className="mt-8 flex flex-col gap-3">
+      <div className="mt-8 flex flex-col gap-3 lg:mt-10">
         <h3 className="font-bold">Descrição</h3>
-        <p className="text-justify text-sm opacity-60">{product.description}</p>
+        <p className="text-justify text-sm opacity-60 lg:text-xs">{product.description}</p>
       </div>
 
       <Button className="font bold mt-8 uppercase"
@@ -82,7 +84,7 @@ const ProductInfo = ({
         Adicionar ao carrinho
       </Button>
 
-      <div className="mt-5 flex items-center justify-between rounded-lg bg-accent px-5 py-2">
+      <div className="mt-5 flex items-center justify-between rounded-lg bg-accent px-5 py-2 lg:bg-[#2A2A2A]">
         <div className="flex items-center gap-2">
           <TruckIcon />
 
