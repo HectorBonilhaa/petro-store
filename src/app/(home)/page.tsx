@@ -56,7 +56,10 @@ export default async function Home() {
         <SectionTitle>
           <a href="/deals">Ofertas</a>
         </SectionTitle>
-        <ProductList products={deals} />
+        <div>
+        <ProductList  products={deals} />
+
+        </div>
       </div>
       
       <div className="lg:flex lg:justify-center lg:w-[100%] lg:gap-5 lg:p-3">
@@ -94,9 +97,10 @@ export default async function Home() {
       </div>
 
       <div className="hidden lg:block">
-      <PromoBanner className=" flex w-[100%] h-[20.75rem] lg:p-5"
+      <PromoBanner className=" flex w-[100%] h-[30.75rem] object-cover"
           src="/Banner-home-04-desktop.png"
           alt="até 20% de desconto em fones"
+          sizes="100vw"
           
         />
       </div>
