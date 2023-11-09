@@ -47,7 +47,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
           <AccordionTrigger>
             <div className="flex flex-col gap-1 text-left">
               <p className="text-bold">Pedido com {order.orderProducts.length} produto(s)</p>
-              <p className="text-sm opacity-60">Feito em: <span className="text-xs">{format(order.createdAt, "d/MM/yy 'ás' HH:mm")}</span> </p>
+              <p className="text-sm opacity-60">Feito em: <span className="text-xs lg:text-sm">{format(order.createdAt, "d/MM/yy 'ás' HH:mm")}</span> </p>
             </div>
           </AccordionTrigger>
 
@@ -55,20 +55,20 @@ const OrderItem = ({ order }: OrderItemProps) => {
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between">
                 <div className="font-bold">
-                  <p>Status</p>
-                  <p className="text-xs text-[#8162FF]">{order.status}</p>
+                  <p className="lg:text-lg lg:font-bold">Status</p>
+                  <p className="text-xs lg:text-sm text-[#8162FF]">{order.status}</p>
                 </div>
 
                 <div>
-                  <p className="font-bold">Data</p>
-                  <p className="opacity-60">
+                  <p className="font-bold lg:text-lg">Data</p>
+                  <p className="opacity-60 lg:font-bold lg:text-sm lg:text-[#8162FF] lg:opacity-100">
                     {format(order.createdAt, "d/MM/yy")}
                   </p>
                 </div>
 
                 <div>
-                  <p className="font-bold">Pagamento</p>
-                  <p className="opacity-60"> Cartão</p>
+                  <p className="font-bold lg:text-lg">Pagamento</p>
+                  <p className="opacity-60 lg:text-sm lg:text-[#8162FF] lg:opacity-100 lg:font-bold"> Cartão</p>
                 </div>
               </div>
 
@@ -79,7 +79,9 @@ const OrderItem = ({ order }: OrderItemProps) => {
                 />
               ))}
 
-              <div className="fex flex-col gap-1 text-xs">
+
+
+              <div className="fex flex-col gap-1 text-xs lg:text-[16px] lg:mt-4">
                 <Separator />
 
                 <div className="flex justify-between py-3">
@@ -91,7 +93,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
 
                 <div className="flex justify-between py-3">
                   <p>Entrega</p>
-                  <p>GRÁTIS</p>
+                  <p className="lg:text-[#8162FF] lg:font-bold">GRÁTIS</p>
                 </div>
 
                 <Separator />
@@ -103,8 +105,8 @@ const OrderItem = ({ order }: OrderItemProps) => {
 
                 <Separator />
 
-                <div className="flex justify-between py-3 text-sm font-bold">
-                  <p>Total</p>
+                <div className="flex justify-between py-3 text-sm font-bold lg:py-0 lg:text-[16px] lg:mt-2">
+                  <p className="lg:text-[16px]">Total</p>
                   <p>R$ {total.toFixed(2)}</p>
                 </div>
               </div>
